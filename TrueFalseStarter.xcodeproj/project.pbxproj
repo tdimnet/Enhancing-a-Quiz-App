@@ -45,6 +45,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		493FAA052088847000A01B7B /* question */ = {
+			isa = PBXGroup;
+			children = (
+				49D141602087BE5000244451 /* QuestionModel.swift */,
+				49D141662087BF4000244451 /* questions.data.swift */,
+			);
+			path = question;
+			sourceTree = "<group>";
+		};
+		493FAA062088848A00A01B7B /* answer */ = {
+			isa = PBXGroup;
+			children = (
+				49D141642087BE8F00244451 /* AnswerModel.swift */,
+			);
+			path = answer;
+			sourceTree = "<group>";
+		};
+		493FAA07208884A600A01B7B /* quiz */ = {
+			isa = PBXGroup;
+			children = (
+				493FAA032088806700A01B7B /* QuizController.swift */,
+			);
+			path = quiz;
+			sourceTree = "<group>";
+		};
 		97093D2F1C913506001275BC = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +89,9 @@
 		97093D3A1C913506001275BC /* TrueFalseStarter */ = {
 			isa = PBXGroup;
 			children = (
+				493FAA07208884A600A01B7B /* quiz */,
+				493FAA062088848A00A01B7B /* answer */,
+				493FAA052088847000A01B7B /* question */,
 				97093D3B1C913506001275BC /* AppDelegate.swift */,
 				97093D3D1C913506001275BC /* ViewController.swift */,
 				97093D3F1C913506001275BC /* Main.storyboard */,
@@ -71,10 +99,6 @@
 				97093D441C913506001275BC /* LaunchScreen.storyboard */,
 				97093D471C913506001275BC /* Info.plist */,
 				97093D521C932116001275BC /* GameSound.wav */,
-				49D141602087BE5000244451 /* QuestionModel.swift */,
-				49D141642087BE8F00244451 /* AnswerModel.swift */,
-				49D141662087BF4000244451 /* questions.data.swift */,
-				493FAA032088806700A01B7B /* QuizController.swift */,
 			);
 			path = TrueFalseStarter;
 			sourceTree = "<group>";

@@ -26,6 +26,10 @@ class ViewController: UIViewController {
         ["Question": "All ducks are birds", "Answer": "True"]
     ]
     
+    let quiz = Quiz(questions: [firstQuestion, secondQuestion], questionsPerRound: 4, questionsAsked: 0, correctQuestions: 0)
+    
+    
+    
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
@@ -38,6 +42,11 @@ class ViewController: UIViewController {
         // Start game
         //playGameStartSound() -> For now hide the sound on start
         displayQuestion()
+        
+        
+        let choosenQuestion = quiz.selectQuestionRandomly()
+        print("Test \(choosenQuestion.question)")
+        
     }
 
     override func didReceiveMemoryWarning() {
