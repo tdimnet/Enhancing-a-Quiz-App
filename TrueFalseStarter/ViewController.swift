@@ -45,6 +45,19 @@ class ViewController: UIViewController {
         // Start game
         //playGameStartSound() -> For now hide the sound on start
         displayQuestion()
+        
+        // The question test randomly selected
+        let test = quiz.selectQuestionRandomly()
+        
+        // The question itself
+        print(test.question)
+        
+        // Examples of questions
+        print(test.answers[0].answer)
+        print(test.answers[0].isCorrect)
+        print(test.answers[1].answer)
+        print(test.answers[1].isCorrect)
+        
     }
 
     override func didReceiveMemoryWarning() {
