@@ -32,8 +32,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answerFeedback: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+//    @IBOutlet weak var trueButton: UIButton!
+//    @IBOutlet weak var falseButton: UIButton!
+    
+    
     @IBOutlet weak var playAgainButton: UIButton!
     
 
@@ -60,8 +62,10 @@ class ViewController: UIViewController {
     
     func displayScore() {
         // Hide the answer buttons
-        trueButton.isHidden = true
-        falseButton.isHidden = true
+//        trueButton.isHidden = true
+//        falseButton.isHidden = true
+        
+        
         answerFeedback.isHidden = true
         
         // Display play again button
@@ -80,14 +84,14 @@ class ViewController: UIViewController {
         
         answerFeedback.isHidden = false
         
-        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
-            correctQuestions += 1
-            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
-            answerFeedback.text = "Correct!"
-        } else {
-            answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
-            answerFeedback.text = "Sorry, that's not it."
-        }
+//        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
+//            correctQuestions += 1
+//            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
+//            answerFeedback.text = "Correct!"
+//        } else {
+//            answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
+//            answerFeedback.text = "Sorry, that's not it."
+//        }
         
         loadNextRoundWithDelay(seconds: 2)
     }
@@ -104,8 +108,8 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain() {
         // Show the answer buttons
-        trueButton.isHidden = false
-        falseButton.isHidden = false
+//        trueButton.isHidden = false
+//        falseButton.isHidden = false
         
         questionsAsked = 0
         correctQuestions = 0
