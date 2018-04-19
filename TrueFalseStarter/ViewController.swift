@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var questionField: UILabel!
+    @IBOutlet weak var answerFeedback: UILabel!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
@@ -42,11 +43,6 @@ class ViewController: UIViewController {
         // Start game
         //playGameStartSound() -> For now hide the sound on start
         displayQuestion()
-        
-        
-        let choosenQuestion = quiz.selectQuestionRandomly()
-        print("Test \(choosenQuestion.question)")
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,12 +55,14 @@ class ViewController: UIViewController {
         let questionDictionary = trivia[indexOfSelectedQuestion]
         questionField.text = questionDictionary["Question"]
         playAgainButton.isHidden = true
+        answerFeedback.isHidden = true
     }
     
     func displayScore() {
         // Hide the answer buttons
         trueButton.isHidden = true
         falseButton.isHidden = true
+        answerFeedback.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
@@ -80,11 +78,15 @@ class ViewController: UIViewController {
         let selectedQuestionDict = trivia[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDict["Answer"]
         
+        answerFeedback.isHidden = false
+        
         if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
             correctQuestions += 1
-            questionField.text = "Correct!"
+            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
+            answerFeedback.text = "Correct!"
         } else {
-            questionField.text = "Sorry, wrong answer!"
+            answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
+            answerFeedback.text = "Sorry, that's not it."
         }
         
         loadNextRoundWithDelay(seconds: 2)
