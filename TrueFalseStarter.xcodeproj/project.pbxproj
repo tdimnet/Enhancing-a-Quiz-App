@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		493FAA042088806700A01B7B /* QuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493FAA032088806700A01B7B /* QuizController.swift */; };
 		49D141612087BE5000244451 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D141602087BE5000244451 /* QuestionModel.swift */; };
 		49D141652087BE8F00244451 /* AnswerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D141642087BE8F00244451 /* AnswerModel.swift */; };
 		49D141672087BF4000244451 /* questions.data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D141662087BF4000244451 /* questions.data.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		493FAA032088806700A01B7B /* QuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizController.swift; sourceTree = "<group>"; };
 		49D141602087BE5000244451 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		49D141642087BE8F00244451 /* AnswerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerModel.swift; sourceTree = "<group>"; };
 		49D141662087BF4000244451 /* questions.data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = questions.data.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				49D141602087BE5000244451 /* QuestionModel.swift */,
 				49D141642087BE8F00244451 /* AnswerModel.swift */,
 				49D141662087BF4000244451 /* questions.data.swift */,
+				493FAA032088806700A01B7B /* QuizController.swift */,
 			);
 			path = TrueFalseStarter;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				49D141612087BE5000244451 /* QuestionModel.swift in Sources */,
 				49D141652087BE8F00244451 /* AnswerModel.swift in Sources */,
+				493FAA042088806700A01B7B /* QuizController.swift in Sources */,
 				49D141672087BF4000244451 /* questions.data.swift in Sources */,
 				97093D3E1C913506001275BC /* ViewController.swift in Sources */,
 				97093D3C1C913506001275BC /* AppDelegate.swift in Sources */,
