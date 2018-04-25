@@ -32,9 +32,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answerFeedback: UILabel!
-//    @IBOutlet weak var trueButton: UIButton!
-//    @IBOutlet weak var falseButton: UIButton!
     
+    @IBOutlet weak var firstAnswerButton: UIButton!
+    @IBOutlet weak var secondAnswerButton: UIButton!
+    @IBOutlet weak var thirdAnswerButton: UIButton!
+    @IBOutlet weak var fourthAnswerButton: UIButton!
+    
+    //    @IBOutlet weak var trueButton: UIButton!
+    //    @IBOutlet weak var falseButton: UIButton!
     
     @IBOutlet weak var playAgainButton: UIButton!
     
@@ -88,15 +93,19 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
     @IBAction func checkAnswer(_ sender: UIButton) {
+        
+        
         // Increment the questions asked counter
-        questionsAsked += 1
-        
-        let selectedQuestionDict = trivia[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict["Answer"]
-        
-        answerFeedback.isHidden = false
-        
+//        questionsAsked += 1
+
+//        let selectedQuestionDict = trivia[indexOfSelectedQuestion]
+//        let correctAnswer = selectedQuestionDict["Answer"]
+
+//        answerFeedback.isHidden = false
+
 //        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
 //            correctQuestions += 1
 //            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
@@ -105,8 +114,8 @@ class ViewController: UIViewController {
 //            answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
 //            answerFeedback.text = "Sorry, that's not it."
 //        }
-        
-        loadNextRoundWithDelay(seconds: 2)
+
+//        loadNextRoundWithDelay(seconds: 2)
     }
     
     func nextRound() {

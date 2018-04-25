@@ -49,6 +49,9 @@
                                         <state key="normal" title="firstAnswer">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O4q-c5-6kT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="088-nb-G9E">
                                         <rect key="frame" x="0.0" y="58" width="248" height="48"/>
@@ -57,6 +60,9 @@
                                         <state key="normal" title="secondAnswer">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q0k-ZE-6i9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zf-Yc-a9n">
                                         <rect key="frame" x="0.0" y="116" width="248" height="48"/>
@@ -65,6 +71,9 @@
                                         <state key="normal" title="thirdAnswer">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pG7-nr-ANh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHR-qk-Rpm">
                                         <rect key="frame" x="0.0" y="174" width="248" height="48"/>
@@ -73,6 +82,9 @@
                                         <state key="normal" title="fourthAnswer">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZLf-mD-0dZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -102,8 +114,12 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="answerFeedback" destination="zoo-lh-xeN" id="JAU-wS-Fi6"/>
+                        <outlet property="firstAnswerButton" destination="YJz-4n-eEy" id="mmj-1I-hP9"/>
+                        <outlet property="fourthAnswerButton" destination="CHR-qk-Rpm" id="nkv-Bj-nqC"/>
                         <outlet property="playAgainButton" destination="K17-uy-MvB" id="0Bx-Cm-ye0"/>
                         <outlet property="questionField" destination="I3V-ih-1Ky" id="7UI-o2-ATi"/>
+                        <outlet property="secondAnswerButton" destination="088-nb-G9E" id="K4Z-wg-YAK"/>
+                        <outlet property="thirdAnswerButton" destination="5Zf-Yc-a9n" id="sSk-dD-6Oq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
