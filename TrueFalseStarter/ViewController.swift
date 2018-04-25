@@ -55,13 +55,13 @@ class ViewController: UIViewController {
         let test = quiz.selectQuestionRandomly()
         
         // The question itself
-        print(test.question)
+        //print(test.question)
         
         // Examples of questions
-        print(test.answers[0].answer)
-        print(test.answers[0].isCorrect)
-        print(test.answers[1].answer)
-        print(test.answers[1].isCorrect)
+        //print(test.answers[0].answer)
+        //print(test.answers[0].isCorrect)
+        //print(test.answers[1].answer)
+        //print(test.answers[1].isCorrect)
         
     }
 
@@ -71,9 +71,24 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-        let questionDictionary = trivia[indexOfSelectedQuestion]
-        questionField.text = questionDictionary["Question"]
+        //indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
+        //let questionDictionary = trivia[indexOfSelectedQuestion]
+        //questionField.text = questionDictionary["Question"]
+        
+        // Choose and display the question itself
+        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
+        let questionDictionary = quiz.questions[indexOfSelectedQuestion]
+        questionField.text = questionDictionary.question
+        
+        // Choose and display questions answer
+        print("\(questionDictionary.answers[0].answer) \(questionDictionary.answers[1].answer) \(questionDictionary.answers[2].answer) \(questionDictionary.answers[3].answer)")
+        
+        firstAnswerButton.setTitle(questionDictionary.answers[0].answer, for: .normal)
+        secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
+        thirdAnswerButton.setTitle(questionDictionary.answers[2].answer, for: .normal)
+        fourthAnswerButton.setTitle(questionDictionary.answers[3].answer, for: .normal)
+        
+        
         playAgainButton.isHidden = true
         answerFeedback.isHidden = true
     }
