@@ -9,7 +9,7 @@
 import GameKit
 
 class Quiz {
-    let questions: [Question]
+    var questions: [Question]
     let questionsPerRound: Int
     var questionsAsked: Int
     var correctQuestions: Int

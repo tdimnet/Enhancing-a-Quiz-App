@@ -19,21 +19,12 @@ class ViewController: UIViewController {
     
     var gameSound: SystemSoundID = 0
     
-    let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
-    ]
-    
-    let quiz = Quiz(
+    var quiz = Quiz(
         questions: [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion],
         questionsPerRound: 4,
         questionsAsked: 0,
         correctQuestions: 0
     )
-    
-    
     
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answerFeedback: UILabel!
@@ -42,9 +33,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var secondAnswerButton: UIButton!
     @IBOutlet weak var thirdAnswerButton: UIButton!
     @IBOutlet weak var fourthAnswerButton: UIButton!
-    
-    //    @IBOutlet weak var trueButton: UIButton!
-    //    @IBOutlet weak var falseButton: UIButton!
     
     @IBOutlet weak var playAgainButton: UIButton!
     
@@ -63,21 +51,15 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        //indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
-        //let questionDictionary = trivia[indexOfSelectedQuestion]
-        //questionField.text = questionDictionary["Question"]
-        
         // Choose and display the question itself
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
         let questionDictionary = quiz.questions[indexOfSelectedQuestion]
-        
         questionField.text = questionDictionary.question
         
         firstAnswerButton.setTitle(questionDictionary.answers[0].answer, for: .normal)
         secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
         thirdAnswerButton.setTitle(questionDictionary.answers[2].answer, for: .normal)
         fourthAnswerButton.setTitle(questionDictionary.answers[3].answer, for: .normal)
-        
         
         playAgainButton.isHidden = true
         answerFeedback.isHidden = true
@@ -90,76 +72,48 @@ class ViewController: UIViewController {
         thirdAnswerButton.isHidden = true
         fourthAnswerButton.isHidden = true
         
-        
         answerFeedback.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
         
         questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
-        
     }
     
     
     
     @IBAction func checkAnswer(_ sender: UIButton) {
-        
         questionsAsked += 1
-        
         answerFeedback.isHidden = false
         
-        //print(sender.titleLabel?.text ?? "")
-        
         let selectedQuestion = quiz.questions[indexOfSelectedQuestion]
-        //print(selectedQuestion)
         
         if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[0].answer && selectedQuestion.answers[0].isCorrect == true) {
-            print("This is true")
             correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
         } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[1].answer && selectedQuestion.answers[1].isCorrect == true) {
-            print("This is true")
             correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
         } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[2].answer && selectedQuestion.answers[2].isCorrect == true) {
-            print("This is true")
             correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
         } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[3].answer && selectedQuestion.answers[3].isCorrect == true) {
-            print("This is true")
             correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
         } else {
-            print("This is false")
             answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
             answerFeedback.text = "Sorry, that's not it."
         }
         
+        quiz.questions.remove(at: indexOfSelectedQuestion)
+        
+        print(quiz.questions.count)
+        
         loadNextRoundWithDelay(seconds: 2)
-        
-        
-        // Increment the questions asked counter
-//        questionsAsked += 1
-
-//        let selectedQuestionDict = trivia[indexOfSelectedQuestion]
-//        let correctAnswer = selectedQuestionDict["Answer"]
-
-//        answerFeedback.isHidden = false
-
-//        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
-//            correctQuestions += 1
-//            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
-//            answerFeedback.text = "Correct!"
-//        } else {
-//            answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
-//            answerFeedback.text = "Sorry, that's not it."
-//        }
-
-//        loadNextRoundWithDelay(seconds: 2)
     }
     
     func nextRound() {
@@ -174,8 +128,12 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain() {
         // Show the answer buttons
-//        trueButton.isHidden = false
-//        falseButton.isHidden = false
+        firstAnswerButton.isHidden = false
+        secondAnswerButton.isHidden = false
+        thirdAnswerButton.isHidden = false
+        fourthAnswerButton.isHidden = false
+        
+        quiz.questions = [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion]
         
         questionsAsked = 0
         correctQuestions = 0
