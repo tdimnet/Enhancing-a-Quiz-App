@@ -9,15 +9,16 @@
 import UIKit
 import GameKit
 import AudioToolbox
+import AVFoundation
 
 class ViewController: UIViewController {
     
-    let questionsPerRound = 4
-    var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion: Int = 0
     
     var gameSound: SystemSoundID = 0
+    let winningSystemSoundID: SystemSoundID = 1016
+    let losingSystemSoundID: SystemSoundID = 1073
     
     var quiz = Quiz(
         questions: [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion],
@@ -41,7 +42,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         loadGameStartSound()
         // Start game
-        //playGameStartSound() -> For now hide the sound on start
+        playGameStartSound()
         displayQuestion()
     }
 
@@ -77,36 +78,41 @@ class ViewController: UIViewController {
         // Display play again button
         playAgainButton.isHidden = false
         
-        questionField.text = "Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!"
+        questionField.text = "Way to go!\nYou got \(quiz.correctQuestions) out of \(quiz.questionsPerRound) correct!"
     }
     
     
     
     @IBAction func checkAnswer(_ sender: UIButton) {
-        questionsAsked += 1
+        quiz.questionsAsked += 1
         answerFeedback.isHidden = false
         
         let selectedQuestion = quiz.questions[indexOfSelectedQuestion]
         
         if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[0].answer && selectedQuestion.answers[0].isCorrect == true) {
-            correctQuestions += 1
+            quiz.correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
+            AudioServicesPlaySystemSound(winningSystemSoundID)
         } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[1].answer && selectedQuestion.answers[1].isCorrect == true) {
-            correctQuestions += 1
+            quiz.correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
+            AudioServicesPlaySystemSound(winningSystemSoundID)
         } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[2].answer && selectedQuestion.answers[2].isCorrect == true) {
             correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
+            AudioServicesPlaySystemSound(winningSystemSoundID)
         } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[3].answer && selectedQuestion.answers[3].isCorrect == true) {
             correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
+            AudioServicesPlaySystemSound(winningSystemSoundID)
         } else {
             answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
             answerFeedback.text = "Sorry, that's not it."
+            AudioServicesPlaySystemSound(losingSystemSoundID)
         }
         
         quiz.questions.remove(at: indexOfSelectedQuestion)
@@ -117,7 +123,7 @@ class ViewController: UIViewController {
     }
     
     func nextRound() {
-        if questionsAsked == questionsPerRound {
+        if quiz.questionsAsked == quiz.questionsPerRound {
             // Game is over
             displayScore()
         } else {
@@ -135,7 +141,7 @@ class ViewController: UIViewController {
         
         quiz.questions = [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion]
         
-        questionsAsked = 0
+        quiz.questionsAsked = 0
         correctQuestions = 0
         nextRound()
     }
