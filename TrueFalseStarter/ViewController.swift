@@ -26,7 +26,12 @@ class ViewController: UIViewController {
         ["Question": "All ducks are birds", "Answer": "True"]
     ]
     
-    let quiz = Quiz(questions: [firstQuestion, secondQuestion], questionsPerRound: 4, questionsAsked: 0, correctQuestions: 0)
+    let quiz = Quiz(
+        questions: [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion],
+        questionsPerRound: 4,
+        questionsAsked: 0,
+        correctQuestions: 0
+    )
     
     
     
@@ -65,8 +70,8 @@ class ViewController: UIViewController {
         // Choose and display the question itself
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
         let questionDictionary = quiz.questions[indexOfSelectedQuestion]
-        questionField.text = questionDictionary.question
         
+        questionField.text = questionDictionary.question
         
         firstAnswerButton.setTitle(questionDictionary.answers[0].answer, for: .normal)
         secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
@@ -80,8 +85,10 @@ class ViewController: UIViewController {
     
     func displayScore() {
         // Hide the answer buttons
-//        trueButton.isHidden = true
-//        falseButton.isHidden = true
+        firstAnswerButton.isHidden = true
+        secondAnswerButton.isHidden = true
+        thirdAnswerButton.isHidden = true
+        fourthAnswerButton.isHidden = true
         
         
         answerFeedback.isHidden = true
