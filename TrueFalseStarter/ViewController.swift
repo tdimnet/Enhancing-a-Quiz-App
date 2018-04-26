@@ -50,19 +50,6 @@ class ViewController: UIViewController {
         // Start game
         //playGameStartSound() -> For now hide the sound on start
         displayQuestion()
-        
-        // The question test randomly selected
-        let test = quiz.selectQuestionRandomly()
-        
-        // The question itself
-        //print(test.question)
-        
-        // Examples of questions
-        //print(test.answers[0].answer)
-        //print(test.answers[0].isCorrect)
-        //print(test.answers[1].answer)
-        //print(test.answers[1].isCorrect)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,8 +67,6 @@ class ViewController: UIViewController {
         let questionDictionary = quiz.questions[indexOfSelectedQuestion]
         questionField.text = questionDictionary.question
         
-        // Choose and display questions answer
-        print("\(questionDictionary.answers[0].answer) \(questionDictionary.answers[1].answer) \(questionDictionary.answers[2].answer) \(questionDictionary.answers[3].answer)")
         
         firstAnswerButton.setTitle(questionDictionary.answers[0].answer, for: .normal)
         secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
@@ -111,6 +96,43 @@ class ViewController: UIViewController {
     
     
     @IBAction func checkAnswer(_ sender: UIButton) {
+        
+        questionsAsked += 1
+        
+        answerFeedback.isHidden = false
+        
+        //print(sender.titleLabel?.text ?? "")
+        
+        let selectedQuestion = quiz.questions[indexOfSelectedQuestion]
+        //print(selectedQuestion)
+        
+        if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[0].answer && selectedQuestion.answers[0].isCorrect == true) {
+            print("This is true")
+            correctQuestions += 1
+            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
+            answerFeedback.text = "Correct!"
+        } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[1].answer && selectedQuestion.answers[1].isCorrect == true) {
+            print("This is true")
+            correctQuestions += 1
+            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
+            answerFeedback.text = "Correct!"
+        } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[2].answer && selectedQuestion.answers[2].isCorrect == true) {
+            print("This is true")
+            correctQuestions += 1
+            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
+            answerFeedback.text = "Correct!"
+        } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[3].answer && selectedQuestion.answers[3].isCorrect == true) {
+            print("This is true")
+            correctQuestions += 1
+            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
+            answerFeedback.text = "Correct!"
+        } else {
+            print("This is false")
+            answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
+            answerFeedback.text = "Sorry, that's not it."
+        }
+        
+        loadNextRoundWithDelay(seconds: 2)
         
         
         // Increment the questions asked counter
