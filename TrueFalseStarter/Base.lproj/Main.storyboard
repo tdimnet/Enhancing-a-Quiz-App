@@ -33,7 +33,7 @@
                                     <action selector="playAgain" destination="BYZ-38-t0r" eventType="touchUpInside" id="klz-B2-JAN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-ih-1Ky">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sample Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-ih-1Ky">
                                 <rect key="frame" x="20" y="40" width="280" height="19.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -88,10 +88,16 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoo-lh-xeN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Correct!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoo-lh-xeN">
                                 <rect key="frame" x="36" y="90" width="248" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <color key="textColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This answer is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrj-5o-a4m">
+                                <rect key="frame" x="36" y="122" width="248" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -101,10 +107,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="zoo-lh-xeN" secondAttribute="trailing" constant="20" id="4ID-DN-9J8"/>
                             <constraint firstAttribute="trailing" secondItem="K17-uy-MvB" secondAttribute="trailing" constant="20" id="4zh-p7-f3I"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="K17-uy-MvB" secondAttribute="bottom" constant="40" id="6GU-z7-9Kz"/>
+                            <constraint firstItem="ieB-55-8qT" firstAttribute="top" secondItem="Lrj-5o-a4m" secondAttribute="bottom" constant="35" id="Hav-FQ-mgm"/>
                             <constraint firstItem="I3V-ih-1Ky" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="K8H-bH-vRS"/>
                             <constraint firstItem="zoo-lh-xeN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Ox1-6A-ntc"/>
                             <constraint firstAttribute="trailing" secondItem="I3V-ih-1Ky" secondAttribute="trailing" constant="20" id="Wtu-R8-PrF"/>
+                            <constraint firstItem="Lrj-5o-a4m" firstAttribute="top" secondItem="zoo-lh-xeN" secondAttribute="bottom" constant="8" id="XxH-kF-XU2"/>
+                            <constraint firstItem="Lrj-5o-a4m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Ymy-nW-LfC"/>
                             <constraint firstItem="ieB-55-8qT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yp0-gk-ucu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lrj-5o-a4m" secondAttribute="trailing" constant="20" id="e6A-3M-wlC"/>
                             <constraint firstItem="ieB-55-8qT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hDe-FH-h2t"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ieB-55-8qT" secondAttribute="trailing" constant="20" id="nlT-aa-VhI"/>
                             <constraint firstItem="I3V-ih-1Ky" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="s8G-3d-DtA"/>
@@ -113,6 +123,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="answer" destination="Lrj-5o-a4m" id="Jkq-Mm-d3c"/>
                         <outlet property="answerFeedback" destination="zoo-lh-xeN" id="JAU-wS-Fi6"/>
                         <outlet property="firstAnswerButton" destination="YJz-4n-eEy" id="mmj-1I-hP9"/>
                         <outlet property="fourthAnswerButton" destination="CHR-qk-Rpm" id="nkv-Bj-nqC"/>
@@ -124,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.40000000000001" y="129.98500749625188"/>
+            <point key="canvasLocation" x="136.875" y="129.92957746478874"/>
         </scene>
     </scenes>
 </document>

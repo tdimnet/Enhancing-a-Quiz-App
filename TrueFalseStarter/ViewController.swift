@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answerFeedback: UILabel!
+    @IBOutlet weak var answer: UILabel!
     
     @IBOutlet weak var firstAnswerButton: UIButton!
     @IBOutlet weak var secondAnswerButton: UIButton!
@@ -64,6 +65,7 @@ class ViewController: UIViewController {
         
         playAgainButton.isHidden = true
         answerFeedback.isHidden = true
+        answer.isHidden = true
     }
     
     func displayScore() {
@@ -112,12 +114,15 @@ class ViewController: UIViewController {
         } else {
             answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
             answerFeedback.text = "Sorry, that's not it."
+            answer.isHidden = false
+            for possibleAnswer in selectedQuestion.answers {
+                if possibleAnswer.isCorrect {
+                    answer.text = "This answer was: \(possibleAnswer.answer)"
+                }
+            }
             AudioServicesPlaySystemSound(losingSystemSoundID)
         }
-        
         quiz.questions.remove(at: indexOfSelectedQuestion)
-        
-        print(quiz.questions.count)
         
         loadNextRoundWithDelay(seconds: 2)
     }
