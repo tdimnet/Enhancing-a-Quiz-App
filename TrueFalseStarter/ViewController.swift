@@ -91,23 +91,10 @@ class ViewController: UIViewController {
         
         let selectedQuestion = quiz.questions[indexOfSelectedQuestion]
         
-        if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[0].answer && selectedQuestion.answers[0].isCorrect == true) {
+        //quiz.isAnswerCorrect(question: selectedQuestion, choosenAnswer: sender.titleLabel?.text ?? "")
+        
+        if (quiz.isAnswerCorrect(question: selectedQuestion, choosenAnswer: sender.titleLabel?.text ?? "")) {
             quiz.correctQuestions += 1
-            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
-            answerFeedback.text = "Correct!"
-            AudioServicesPlaySystemSound(winningSystemSoundID)
-        } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[1].answer && selectedQuestion.answers[1].isCorrect == true) {
-            quiz.correctQuestions += 1
-            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
-            answerFeedback.text = "Correct!"
-            AudioServicesPlaySystemSound(winningSystemSoundID)
-        } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[2].answer && selectedQuestion.answers[2].isCorrect == true) {
-            correctQuestions += 1
-            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
-            answerFeedback.text = "Correct!"
-            AudioServicesPlaySystemSound(winningSystemSoundID)
-        } else if (sender.titleLabel?.text ?? "" == selectedQuestion.answers[3].answer && selectedQuestion.answers[3].isCorrect == true) {
-            correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
             answerFeedback.text = "Correct!"
             AudioServicesPlaySystemSound(winningSystemSoundID)

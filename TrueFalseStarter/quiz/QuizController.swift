@@ -27,4 +27,13 @@ class Quiz {
         let randomIndex: Int = GKRandomSource.sharedRandom().nextInt(upperBound: questions.count)
         return questions[randomIndex]
     }
+    
+    func isAnswerCorrect(question: Question, choosenAnswer: String) -> Bool {
+        for index in 0..<question.answers.count {
+            if (question.answers[index].isCorrect && question.answers[index].answer == choosenAnswer) {
+                return true
+            }
+        }
+        return false
+    }
 }
