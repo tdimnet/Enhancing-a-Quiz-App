@@ -91,35 +91,6 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func checkAnswer(_ sender: UIButton) {
-        quiz.questionsAsked += 1
-        answerFeedback.isHidden = false
-        
-        let selectedQuestion = quiz.questions[quiz.indexOfSelectedQuestion]
-        
-        //quiz.isAnswerCorrect(question: selectedQuestion, choosenAnswer: sender.titleLabel?.text ?? "")
-        
-        if (quiz.isAnswerCorrect(question: selectedQuestion, choosenAnswer: sender.titleLabel?.text ?? "")) {
-            quiz.correctQuestions += 1
-            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
-            answerFeedback.text = "Correct!"
-            AudioServicesPlaySystemSound(winningSystemSoundID)
-        } else {
-            answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
-            answerFeedback.text = "Sorry, that's not it."
-            answer.isHidden = false
-            for possibleAnswer in selectedQuestion.answers {
-                if possibleAnswer.isCorrect {
-                    answer.text = "This answer was: \(possibleAnswer.answer)"
-                }
-            }
-            AudioServicesPlaySystemSound(losingSystemSoundID)
-        }
-        quiz.questions.remove(at: quiz.indexOfSelectedQuestion)
-        
-        loadNextRoundWithDelay(seconds: 2)
-    }
-    
     func nextRound() {
         if quiz.questionsAsked == quiz.questionsPerRound {
             // Game is over
@@ -130,6 +101,41 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func checkAnswer(_ sender: UIButton) {
+        // Stock the selected question
+        let selectedQuestion: Question = quiz.questions[quiz.indexOfSelectedQuestion]
+        
+        // And then review the answer
+        if (quiz.isAnswerCorrect(question: selectedQuestion, choosenAnswer: sender.titleLabel?.text ?? "")) {
+            // Here this is true
+            quiz.correctQuestions += 1
+            answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
+            answerFeedback.text = "Correct!"
+            AudioServicesPlaySystemSound(winningSystemSoundID)
+        } else {
+            // Here this is false
+            answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
+            answerFeedback.text = "Sorry, that's not it."
+            answer.isHidden = false
+            for possibleAnswer in selectedQuestion.answers {
+                if possibleAnswer.isCorrect {
+                    answer.text = "This answer was: \(possibleAnswer.answer)"
+                }
+            }
+            AudioServicesPlaySystemSound(losingSystemSoundID)
+        }
+        
+        // Increment the number of questions asked and remove the question from the array
+        quiz.questionsAsked += 1
+        quiz.questions.remove(at: quiz.indexOfSelectedQuestion)
+        
+        // show the true/false feedback
+        answerFeedback.isHidden = false
+        loadNextRoundWithDelay(seconds: 2)
+    }
+    
+    
     @IBAction func playAgain() {
         // Show the answer buttons
         firstAnswerButton.isHidden = false
@@ -137,17 +143,16 @@ class ViewController: UIViewController {
         thirdAnswerButton.isHidden = false
         fourthAnswerButton.isHidden = false
         
+        // Initiliaze the array of questions
         quiz.questions = [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion]
-        
+        // And the incremental variables
         quiz.questionsAsked = 0
         quiz.correctQuestions = 0
         nextRound()
     }
     
 
-    
     // MARK: Helper Methods
-    
     func loadNextRoundWithDelay(seconds: Int) {
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
