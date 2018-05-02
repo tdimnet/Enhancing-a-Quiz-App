@@ -39,6 +39,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var fourthAnswerButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
+    // UIButtons Lightning Mode
+    @IBOutlet weak var normalModeButton: UIButton!
+    @IBOutlet weak var lightningModeButton: UIButton!
+    
     // When the view is loaded, fire up the welcome sound and start playing the quiz game
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +50,28 @@ class ViewController: UIViewController {
         loadGameStartSound()
         playGameStartSound()
         // Start game
-        displayQuestion()
+        //displayQuestion()
+        gameStart()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func gameStart() {
+        // Hide of the unecessary labels
+        playAgainButton.isHidden = true
+        answerFeedback.isHidden = true
+        answer.isHidden = true
+        
+        questionField.isHidden = true
+        
+        firstAnswerButton.isHidden = true
+        secondAnswerButton.isHidden = true
+        thirdAnswerButton.isHidden = true
+        fourthAnswerButton.isHidden = true
+        questionField.isHidden = true
     }
     
     func displayQuestion() {
@@ -70,6 +90,9 @@ class ViewController: UIViewController {
         playAgainButton.isHidden = true
         answerFeedback.isHidden = true
         answer.isHidden = true
+        
+        normalModeButton.isHidden = true
+        lightningModeButton.isHidden = true
     }
     
     func displayScore() {
