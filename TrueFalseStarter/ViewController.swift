@@ -27,7 +27,6 @@ class ViewController: UIViewController {
     let winningSystemSoundID: SystemSoundID = 1016
     let losingSystemSoundID: SystemSoundID = 1073
     
-    
     // UILabel
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answerFeedback: UILabel!
@@ -55,7 +54,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     func displayQuestion() {
         // Choose and display question
         quiz.indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
@@ -74,7 +72,6 @@ class ViewController: UIViewController {
         answer.isHidden = true
     }
     
-    
     func displayScore() {
         // Hide all answer buttons
         firstAnswerButton.isHidden = true
@@ -90,7 +87,6 @@ class ViewController: UIViewController {
         questionField.text = "Way to go!\nYou got \(quiz.correctQuestions) out of \(quiz.questionsPerRound) correct!"
     }
     
-    
     func nextRound() {
         if quiz.questionsAsked == quiz.questionsPerRound {
             // Game is over
@@ -100,7 +96,6 @@ class ViewController: UIViewController {
             displayQuestion()
         }
     }
-    
     
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Stock the selected question
@@ -118,11 +113,7 @@ class ViewController: UIViewController {
             answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
             answerFeedback.text = "Sorry, that's not it."
             answer.isHidden = false
-            for possibleAnswer in selectedQuestion.answers {
-                if possibleAnswer.isCorrect {
-                    answer.text = "This answer was: \(possibleAnswer.answer)"
-                }
-            }
+            answer.text = "This answer was: \(quiz.selectCorrectAnswer(question: selectedQuestion))"
             AudioServicesPlaySystemSound(losingSystemSoundID)
         }
         
@@ -134,7 +125,6 @@ class ViewController: UIViewController {
         answerFeedback.isHidden = false
         loadNextRoundWithDelay(seconds: 2)
     }
-    
     
     @IBAction func playAgain() {
         // Show the answer buttons
@@ -150,7 +140,6 @@ class ViewController: UIViewController {
         quiz.correctQuestions = 0
         nextRound()
     }
-    
 
     // MARK: Helper Methods
     func loadNextRoundWithDelay(seconds: Int) {

@@ -36,4 +36,13 @@ class Quiz {
         }
         return false
     }
+    
+    func selectCorrectAnswer(question: Question) -> String {
+        for index in 0..<question.answers.count {
+            if (question.answers[index].isCorrect) {
+                return question.answers[index].answer
+            }
+        }
+        return "An error occurs"
+    }
 }
