@@ -19,7 +19,9 @@ class ViewController: UIViewController {
         questionsPerRound: 4,
         questionsAsked: 0,
         correctQuestions: 0,
-        indexOfSelectedQuestion: 0
+        indexOfSelectedQuestion: 0,
+        isNormalMode: false,
+        isLightningMode: false
     )
     
     // Deals with all the sound needed for the game
@@ -75,6 +77,15 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
+        questionField.isHidden = false
+        
+        firstAnswerButton.isHidden = false
+        secondAnswerButton.isHidden = false
+        thirdAnswerButton.isHidden = false
+        fourthAnswerButton.isHidden = false
+        questionField.isHidden = false
+        
+        
         // Choose and display question
         quiz.indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
         let questionDictionary = quiz.questions[quiz.indexOfSelectedQuestion]
@@ -120,6 +131,19 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func setGameMode(_ sender: UIButton) {
+        if (sender.titleLabel?.text ?? "" == "Normal Mode") {
+            print("Game is normal as usal")
+            quiz.isNormalMode = true
+        } else {
+            print("Game is lightning mode")
+            quiz.isLightningMode = true
+        }
+        displayQuestion()
+    }
+    
+    
     @IBAction func checkAnswer(_ sender: UIButton) {
         // Stock the selected question
         let selectedQuestion: Question = quiz.questions[quiz.indexOfSelectedQuestion]
@@ -156,7 +180,7 @@ class ViewController: UIViewController {
         thirdAnswerButton.isHidden = false
         fourthAnswerButton.isHidden = false
         
-        // Initiliaze the array of questions
+        // Initiliaze the array of questions and the game mode
         quiz.questions = [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion]
         // And the incremental variables
         quiz.questionsAsked = 0

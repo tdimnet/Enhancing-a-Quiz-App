@@ -14,13 +14,17 @@ class Quiz {
     var questionsAsked: Int
     var correctQuestions: Int
     var indexOfSelectedQuestion: Int
+    var isNormalMode: Bool
+    var isLightningMode: Bool
     
-    init(questions: [Question], questionsPerRound: Int, questionsAsked: Int, correctQuestions: Int, indexOfSelectedQuestion: Int) {
+    init(questions: [Question], questionsPerRound: Int, questionsAsked: Int, correctQuestions: Int, indexOfSelectedQuestion: Int, isNormalMode: Bool, isLightningMode: Bool) {
         self.questions = questions
         self.questionsPerRound = questionsPerRound
         self.questionsAsked = questionsAsked
         self.correctQuestions = correctQuestions
         self.indexOfSelectedQuestion = indexOfSelectedQuestion
+        self.isNormalMode = isNormalMode
+        self.isLightningMode = isLightningMode
     }
     
     func selectQuestionRandomly() -> Question {

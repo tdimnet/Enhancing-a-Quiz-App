@@ -110,6 +110,9 @@
                                         <state key="normal" title="Normal Mode">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="setGameMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Gt-wJ-3le"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrP-iO-eKe">
                                         <rect key="frame" x="0.0" y="58" width="335" height="48"/>
@@ -118,6 +121,9 @@
                                         <state key="normal" title="Lightning Mode">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="setGameMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jJp-J6-4I4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
