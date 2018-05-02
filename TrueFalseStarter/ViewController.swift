@@ -13,37 +13,40 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    var correctQuestions = 0
-    var indexOfSelectedQuestion: Int = 0
-    
-    var gameSound: SystemSoundID = 0
-    let winningSystemSoundID: SystemSoundID = 1016
-    let losingSystemSoundID: SystemSoundID = 1073
-    
+    // Create a new instance of the quiz game class.
     var quiz = Quiz(
         questions: [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion],
         questionsPerRound: 4,
         questionsAsked: 0,
-        correctQuestions: 0
+        correctQuestions: 0,
+        indexOfSelectedQuestion: 0
     )
     
+    // Deals with all the sound needed for the game
+    var gameSound: SystemSoundID = 0
+    let winningSystemSoundID: SystemSoundID = 1016
+    let losingSystemSoundID: SystemSoundID = 1073
+    
+    
+    // UILabel
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var answerFeedback: UILabel!
     @IBOutlet weak var answer: UILabel!
     
+    // UIButton
     @IBOutlet weak var firstAnswerButton: UIButton!
     @IBOutlet weak var secondAnswerButton: UIButton!
     @IBOutlet weak var thirdAnswerButton: UIButton!
     @IBOutlet weak var fourthAnswerButton: UIButton!
-    
     @IBOutlet weak var playAgainButton: UIButton!
     
-
+    // When the view is loaded, fire up the welcome sound and start playing the quiz game
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Sound
         loadGameStartSound()
-        // Start game
         playGameStartSound()
+        // Start game
         displayQuestion()
     }
 
@@ -52,44 +55,47 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     func displayQuestion() {
-        // Choose and display the question itself
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
-        let questionDictionary = quiz.questions[indexOfSelectedQuestion]
+        // Choose and display question
+        quiz.indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
+        let questionDictionary = quiz.questions[quiz.indexOfSelectedQuestion]
         questionField.text = questionDictionary.question
         
+        // Add the label for the possible answer
         firstAnswerButton.setTitle(questionDictionary.answers[0].answer, for: .normal)
         secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
         thirdAnswerButton.setTitle(questionDictionary.answers[2].answer, for: .normal)
         fourthAnswerButton.setTitle(questionDictionary.answers[3].answer, for: .normal)
         
+        // Hide of the unecessary labels
         playAgainButton.isHidden = true
         answerFeedback.isHidden = true
         answer.isHidden = true
     }
     
+    
     func displayScore() {
-        // Hide the answer buttons
+        // Hide all answer buttons
         firstAnswerButton.isHidden = true
         secondAnswerButton.isHidden = true
         thirdAnswerButton.isHidden = true
         fourthAnswerButton.isHidden = true
         
+        // Hide the feedback
         answerFeedback.isHidden = true
         
-        // Display play again button
+        // Display play again button and the game feedbacks
         playAgainButton.isHidden = false
-        
         questionField.text = "Way to go!\nYou got \(quiz.correctQuestions) out of \(quiz.questionsPerRound) correct!"
     }
-    
     
     
     @IBAction func checkAnswer(_ sender: UIButton) {
         quiz.questionsAsked += 1
         answerFeedback.isHidden = false
         
-        let selectedQuestion = quiz.questions[indexOfSelectedQuestion]
+        let selectedQuestion = quiz.questions[quiz.indexOfSelectedQuestion]
         
         //quiz.isAnswerCorrect(question: selectedQuestion, choosenAnswer: sender.titleLabel?.text ?? "")
         
@@ -109,7 +115,7 @@ class ViewController: UIViewController {
             }
             AudioServicesPlaySystemSound(losingSystemSoundID)
         }
-        quiz.questions.remove(at: indexOfSelectedQuestion)
+        quiz.questions.remove(at: quiz.indexOfSelectedQuestion)
         
         loadNextRoundWithDelay(seconds: 2)
     }
@@ -134,7 +140,7 @@ class ViewController: UIViewController {
         quiz.questions = [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion]
         
         quiz.questionsAsked = 0
-        correctQuestions = 0
+        quiz.correctQuestions = 0
         nextRound()
     }
     

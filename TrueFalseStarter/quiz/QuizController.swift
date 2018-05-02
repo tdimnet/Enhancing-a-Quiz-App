@@ -13,14 +13,14 @@ class Quiz {
     let questionsPerRound: Int
     var questionsAsked: Int
     var correctQuestions: Int
-    //var indexOfSelectedQuestion: Int -> for now I do not think we need to use it since I created a selectQuestionRandomly method
+    var indexOfSelectedQuestion: Int
     
-    init(questions: [Question], questionsPerRound: Int, questionsAsked: Int, correctQuestions: Int) {
+    init(questions: [Question], questionsPerRound: Int, questionsAsked: Int, correctQuestions: Int, indexOfSelectedQuestion: Int) {
         self.questions = questions
         self.questionsPerRound = questionsPerRound
         self.questionsAsked = questionsAsked
         self.correctQuestions = correctQuestions
-        //self.indexOfSelectedQuestion = indexOfSelectedQuestion
+        self.indexOfSelectedQuestion = indexOfSelectedQuestion
     }
     
     func selectQuestionRandomly() -> Question {
