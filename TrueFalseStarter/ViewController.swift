@@ -158,7 +158,6 @@ class ViewController: UIViewController {
     
     func stopTimer() {
         if timerIsOn {
-            print("The time is stop!")
             timer.invalidate()
             timerIsOn = false
         }
@@ -174,7 +173,6 @@ class ViewController: UIViewController {
     }
     
     func timeOut() {
-        print("The time is gone!")
         timer.invalidate()
         timerIsOn = false
         checkAnswer(nil)
