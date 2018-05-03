@@ -58,10 +58,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Sound
-            //loadGameStartSound()
-            //playGameStartSound()
+        loadGameStartSound()
+        playGameStartSound()
         // Start game
-        //displayQuestion()
         gameStart()
     }
 
@@ -73,17 +72,17 @@ class ViewController: UIViewController {
     func gameStart() {
         // Hide of the unecessary labels
         playAgainButton.isHidden = true
+        
         answerFeedback.isHidden = true
         answer.isHidden = true
         
-        questionField.isHidden = true
         progressTimeLine.isHidden = true
         
+        questionField.isHidden = true
         firstAnswerButton.isHidden = true
         secondAnswerButton.isHidden = true
         thirdAnswerButton.isHidden = true
         fourthAnswerButton.isHidden = true
-        questionField.isHidden = true
     }
     
     func displayQuestion() {
@@ -92,13 +91,20 @@ class ViewController: UIViewController {
         secondAnswerButton.isHidden = false
         thirdAnswerButton.isHidden = false
         fourthAnswerButton.isHidden = false
-        questionField.isHidden = false
         
         // When lightning mode is active
         if (quiz.isLightningMode) {
             progressTimeLine.isHidden = false
             starTimer()
         }
+        
+        playAgainButton.isHidden = true
+        
+        answer.isHidden = true
+        answerFeedback.isHidden = true
+        
+        normalModeButton.isHidden = true
+        lightningModeButton.isHidden = true
         
         
         // Choose and display question
@@ -111,14 +117,6 @@ class ViewController: UIViewController {
         secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
         thirdAnswerButton.setTitle(questionDictionary.answers[2].answer, for: .normal)
         fourthAnswerButton.setTitle(questionDictionary.answers[3].answer, for: .normal)
-        
-        // Hide of the unecessary labels
-        playAgainButton.isHidden = true
-        answerFeedback.isHidden = true
-        answer.isHidden = true
-        
-        normalModeButton.isHidden = true
-        lightningModeButton.isHidden = true
     }
     
     func displayScore() {
@@ -129,7 +127,11 @@ class ViewController: UIViewController {
         fourthAnswerButton.isHidden = true
         
         // Hide the feedback
+        answer.isHidden = true
         answerFeedback.isHidden = true
+        
+        // Hide the progress time line
+        progressTimeLine.isHidden = true
         
         // Display play again button and the game feedbacks
         playAgainButton.isHidden = false
@@ -209,17 +211,18 @@ class ViewController: UIViewController {
             // Here this is false
             answerFeedback.textColor = UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0)
             answerFeedback.text = "Sorry, that's not it."
+            
             answer.isHidden = false
             answer.text = "This answer was: \(quiz.selectCorrectAnswer(question: selectedQuestion))"
             AudioServicesPlaySystemSound(losingSystemSoundID)
         }
         
+        answerFeedback.isHidden = false
+        
         // Increment the number of questions asked and remove the question from the array
         quiz.questionsAsked += 1
         quiz.questions.remove(at: quiz.indexOfSelectedQuestion)
         
-        // show the true/false feedback
-        answerFeedback.isHidden = false
         loadNextRoundWithDelay(seconds: 2)
     }
     
