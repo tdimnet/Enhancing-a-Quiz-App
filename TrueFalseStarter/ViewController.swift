@@ -24,6 +24,12 @@ class ViewController: UIViewController {
         isLightningMode: false
     )
     
+    // Timer
+    var timerIsOn: Bool = false
+    var timer: Timer = Timer()
+    var timeRemaining: Int = 15
+    var totalTime: Int = 15
+    
     // Deals with all the sound needed for the game
     var gameSound: SystemSoundID = 0
     let winningSystemSoundID: SystemSoundID = 1016
@@ -91,6 +97,7 @@ class ViewController: UIViewController {
         // When lightning mode is active
         if (quiz.isLightningMode) {
             progressTimeLine.isHidden = false
+            starTimer()
         }
         
         
@@ -139,18 +146,42 @@ class ViewController: UIViewController {
         }
     }
     
+    func starTimer() {
+        if !timerIsOn {
+            timeRemaining = 15
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerRunning), userInfo: nil, repeats: true)
+            timerIsOn = true
+        }
+    }
+    
+    func stopTimer() {
+        if timerIsOn {
+            timer.invalidate()
+            timerIsOn = false
+        }
+    }
+    
+    func timerRunning() {
+        if timeRemaining >= 0 {
+            progressTimeLine.setProgress(Float(timeRemaining)/Float(totalTime), animated: false)
+        } else {
+            timeOut()
+        }
+        timeRemaining -= 1
+    }
+    
+    func timeOut() {
+        
+    }
+    
     
     @IBAction func setGameMode(_ sender: UIButton) {
         if (sender.titleLabel?.text ?? "" == "Normal Mode") {
-            print("Game is normal as usal")
             quiz.isNormalMode = true
             quiz.isLightningMode = false
-            progressTimeLine.isHidden = true
         } else {
-            print("Game is lightning mode")
             quiz.isLightningMode = true
             quiz.isNormalMode = false
-            progressTimeLine.isHidden = false
         }
         displayQuestion()
     }

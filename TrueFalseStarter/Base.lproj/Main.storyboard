@@ -127,7 +127,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-1L-erW">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-1L-erW">
                                 <rect key="frame" x="36" y="545" width="303" height="2"/>
                             </progressView>
                         </subviews>
