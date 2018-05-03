@@ -156,6 +156,7 @@ class ViewController: UIViewController {
     
     func stopTimer() {
         if timerIsOn {
+            print("The time is stop!")
             timer.invalidate()
             timerIsOn = false
         }
@@ -171,7 +172,9 @@ class ViewController: UIViewController {
     }
     
     func timeOut() {
-        
+        print("The time is gone!")
+        timer.invalidate()
+        timerIsOn = false
     }
     
     
@@ -188,6 +191,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func checkAnswer(_ sender: UIButton) {
+        //
+        stopTimer()
+        
         // Stock the selected question
         let selectedQuestion: Question = quiz.questions[quiz.indexOfSelectedQuestion]
         
