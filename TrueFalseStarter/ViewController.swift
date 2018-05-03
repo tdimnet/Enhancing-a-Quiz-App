@@ -175,6 +175,7 @@ class ViewController: UIViewController {
         print("The time is gone!")
         timer.invalidate()
         timerIsOn = false
+        checkAnswer(nil)
     }
     
     
@@ -190,15 +191,15 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func checkAnswer(_ sender: UIButton) {
-        //
+    @IBAction func checkAnswer(_ sender: UIButton?) {
+        // Stop the timer directly when a button is pressed
         stopTimer()
         
         // Stock the selected question
         let selectedQuestion: Question = quiz.questions[quiz.indexOfSelectedQuestion]
         
         // And then review the answer
-        if (quiz.isAnswerCorrect(question: selectedQuestion, choosenAnswer: sender.titleLabel?.text ?? "")) {
+        if (quiz.isAnswerCorrect(question: selectedQuestion, choosenAnswer: sender?.titleLabel?.text ?? "")) {
             // Here this is true
             quiz.correctQuestions += 1
             answerFeedback.textColor = UIColor(red: 90/255.0, green: 187/255.0, blue: 181/255.0, alpha: 1.0)
