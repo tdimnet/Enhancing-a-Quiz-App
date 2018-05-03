@@ -33,7 +33,7 @@
                                     <action selector="playAgain" destination="BYZ-38-t0r" eventType="touchUpInside" id="klz-B2-JAN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sample Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-ih-1Ky">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sample Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3V-ih-1Ky">
                                 <rect key="frame" x="20" y="40" width="335" height="19.333333333333329"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -127,28 +127,34 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-1L-erW">
+                                <rect key="frame" x="36" y="545" width="303" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" red="0.031372549019607843" green="0.16862745098039217" blue="0.24313725490196078" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="K17-uy-MvB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="3FF-aV-vrX"/>
                             <constraint firstItem="KMI-fW-6zO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="42a-r5-GU6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zoo-lh-xeN" secondAttribute="trailing" constant="20" id="4ID-DN-9J8"/>
+                            <constraint firstItem="K17-uy-MvB" firstAttribute="top" secondItem="vU9-1L-erW" secondAttribute="bottom" constant="30" id="4aB-zs-3Ev"/>
                             <constraint firstAttribute="trailing" secondItem="K17-uy-MvB" secondAttribute="trailing" constant="20" id="4zh-p7-f3I"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="K17-uy-MvB" secondAttribute="bottom" constant="40" id="6GU-z7-9Kz"/>
                             <constraint firstAttribute="trailing" secondItem="KMI-fW-6zO" secondAttribute="trailing" constant="20" id="7Yp-uc-blt"/>
                             <constraint firstItem="KMI-fW-6zO" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9A6-Tv-rfp"/>
-                            <constraint firstItem="ieB-55-8qT" firstAttribute="top" secondItem="Lrj-5o-a4m" secondAttribute="bottom" constant="35" id="Hav-FQ-mgm"/>
+                            <constraint firstItem="ieB-55-8qT" firstAttribute="top" secondItem="Lrj-5o-a4m" secondAttribute="bottom" constant="25" id="Hav-FQ-mgm"/>
                             <constraint firstItem="I3V-ih-1Ky" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="K8H-bH-vRS"/>
                             <constraint firstItem="zoo-lh-xeN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Ox1-6A-ntc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vU9-1L-erW" secondAttribute="trailing" constant="20" id="SoU-T5-gsH"/>
                             <constraint firstAttribute="trailing" secondItem="I3V-ih-1Ky" secondAttribute="trailing" constant="20" id="Wtu-R8-PrF"/>
                             <constraint firstItem="Lrj-5o-a4m" firstAttribute="top" secondItem="zoo-lh-xeN" secondAttribute="bottom" constant="8" id="XxH-kF-XU2"/>
                             <constraint firstItem="Lrj-5o-a4m" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Ymy-nW-LfC"/>
                             <constraint firstItem="ieB-55-8qT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Yp0-gk-ucu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Lrj-5o-a4m" secondAttribute="trailing" constant="20" id="e6A-3M-wlC"/>
                             <constraint firstItem="ieB-55-8qT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hDe-FH-h2t"/>
+                            <constraint firstItem="vU9-1L-erW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hZs-MY-iLe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ieB-55-8qT" secondAttribute="trailing" constant="20" id="nlT-aa-VhI"/>
                             <constraint firstItem="I3V-ih-1Ky" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="s8G-3d-DtA"/>
-                            <constraint firstItem="zoo-lh-xeN" firstAttribute="top" secondItem="I3V-ih-1Ky" secondAttribute="bottom" constant="30.5" id="y3p-AR-CVW"/>
+                            <constraint firstItem="zoo-lh-xeN" firstAttribute="top" secondItem="I3V-ih-1Ky" secondAttribute="bottom" constant="15" id="y3p-AR-CVW"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
@@ -160,6 +166,7 @@
                         <outlet property="lightningModeButton" destination="PrP-iO-eKe" id="Exj-ju-mOu"/>
                         <outlet property="normalModeButton" destination="VyF-Zw-c7J" id="iKy-nv-xmI"/>
                         <outlet property="playAgainButton" destination="K17-uy-MvB" id="0Bx-Cm-ye0"/>
+                        <outlet property="progressTimeLine" destination="vU9-1L-erW" id="3hl-DC-Sd6"/>
                         <outlet property="questionField" destination="I3V-ih-1Ky" id="7UI-o2-ATi"/>
                         <outlet property="secondAnswerButton" destination="088-nb-G9E" id="K4Z-wg-YAK"/>
                         <outlet property="thirdAnswerButton" destination="5Zf-Yc-a9n" id="sSk-dD-6Oq"/>

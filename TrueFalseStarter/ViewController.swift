@@ -45,12 +45,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var normalModeButton: UIButton!
     @IBOutlet weak var lightningModeButton: UIButton!
     
+    // Progress TimeLine
+    @IBOutlet weak var progressTimeLine: UIProgressView!
+    
     // When the view is loaded, fire up the welcome sound and start playing the quiz game
     override func viewDidLoad() {
         super.viewDidLoad()
         // Sound
-        loadGameStartSound()
-        playGameStartSound()
+            //loadGameStartSound()
+            //playGameStartSound()
         // Start game
         //displayQuestion()
         gameStart()
@@ -68,6 +71,7 @@ class ViewController: UIViewController {
         answer.isHidden = true
         
         questionField.isHidden = true
+        progressTimeLine.isHidden = true
         
         firstAnswerButton.isHidden = true
         secondAnswerButton.isHidden = true
@@ -78,12 +82,16 @@ class ViewController: UIViewController {
     
     func displayQuestion() {
         questionField.isHidden = false
-        
         firstAnswerButton.isHidden = false
         secondAnswerButton.isHidden = false
         thirdAnswerButton.isHidden = false
         fourthAnswerButton.isHidden = false
         questionField.isHidden = false
+        
+        // When lightning mode is active
+        if (quiz.isLightningMode) {
+            progressTimeLine.isHidden = false
+        }
         
         
         // Choose and display question
@@ -136,9 +144,13 @@ class ViewController: UIViewController {
         if (sender.titleLabel?.text ?? "" == "Normal Mode") {
             print("Game is normal as usal")
             quiz.isNormalMode = true
+            quiz.isLightningMode = false
+            progressTimeLine.isHidden = true
         } else {
             print("Game is lightning mode")
             quiz.isLightningMode = true
+            quiz.isNormalMode = false
+            progressTimeLine.isHidden = false
         }
         displayQuestion()
     }
