@@ -122,7 +122,7 @@ class ViewController: UIViewController {
         secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
         thirdAnswerButton.setTitle(questionDictionary.answers[2].answer, for: .normal)
         
-        if isFourthAnswerPresent() < 0.50 {
+        if isFourthAnswerPresent() < 0.50 && !questionDictionary.answers[3].isCorrect {
             fourthAnswerButton.isHidden = true
         } else {
           fourthAnswerButton.setTitle(questionDictionary.answers[3].answer, for: .normal)
