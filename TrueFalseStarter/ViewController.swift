@@ -92,6 +92,11 @@ class ViewController: UIViewController {
         thirdAnswerButton.isHidden = false
         fourthAnswerButton.isHidden = false
         
+        firstAnswerButton.layer.cornerRadius = 5
+        secondAnswerButton.layer.cornerRadius = 5
+        thirdAnswerButton.layer.cornerRadius = 5
+        fourthAnswerButton.layer.cornerRadius = 5
+        
         // When lightning mode is active
         if (quiz.isLightningMode) {
             progressTimeLine.isHidden = false

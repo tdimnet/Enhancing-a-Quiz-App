@@ -94,7 +94,7 @@
                                 <color key="textColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This answer is:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrj-5o-a4m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This answer is:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrj-5o-a4m">
                                 <rect key="frame" x="36" y="122" width="303" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -153,8 +153,8 @@
                             <constraint firstItem="ieB-55-8qT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hDe-FH-h2t"/>
                             <constraint firstItem="vU9-1L-erW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="hZs-MY-iLe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ieB-55-8qT" secondAttribute="trailing" constant="20" id="nlT-aa-VhI"/>
-                            <constraint firstItem="I3V-ih-1Ky" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="s8G-3d-DtA"/>
-                            <constraint firstItem="zoo-lh-xeN" firstAttribute="top" secondItem="I3V-ih-1Ky" secondAttribute="bottom" constant="15" id="y3p-AR-CVW"/>
+                            <constraint firstItem="I3V-ih-1Ky" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="s8G-3d-DtA"/>
+                            <constraint firstItem="zoo-lh-xeN" firstAttribute="top" secondItem="I3V-ih-1Ky" secondAttribute="bottom" constant="10" id="y3p-AR-CVW"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
