@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Sound
         loadGameStartSound()
-        playGameStartSound()
+        //playGameStartSound()
         // Start game
         gameStart()
     }
@@ -116,10 +116,19 @@ class ViewController: UIViewController {
         firstAnswerButton.setTitle(questionDictionary.answers[0].answer, for: .normal)
         secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
         thirdAnswerButton.setTitle(questionDictionary.answers[2].answer, for: .normal)
-        fourthAnswerButton.setTitle(questionDictionary.answers[3].answer, for: .normal)
+        
+        if isFourthAnswerPresent() < 0.50 {
+            fourthAnswerButton.isHidden = true
+        } else {
+          fourthAnswerButton.setTitle(questionDictionary.answers[3].answer, for: .normal)
+        }
     }
     
-    func displayScore() {
+    func isFourthAnswerPresent() -> CGFloat  {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+    
+    func displayScore() -> Void {
         // Hide all answer buttons
         firstAnswerButton.isHidden = true
         secondAnswerButton.isHidden = true
@@ -138,7 +147,7 @@ class ViewController: UIViewController {
         questionField.text = "Way to go!\nYou got \(quiz.correctQuestions) out of \(quiz.questionsPerRound) correct!"
     }
     
-    func nextRound() {
+    func nextRound() -> Void {
         if quiz.questionsAsked == quiz.questionsPerRound {
             // Game is over
             displayScore()
@@ -148,7 +157,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func starTimer() {
+    func starTimer() -> Void {
         if !timerIsOn {
             timeRemaining = 15
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerRunning), userInfo: nil, repeats: true)
@@ -156,14 +165,14 @@ class ViewController: UIViewController {
         }
     }
     
-    func stopTimer() {
+    func stopTimer() -> Void {
         if timerIsOn {
             timer.invalidate()
             timerIsOn = false
         }
     }
     
-    func timerRunning() {
+    func timerRunning() -> Void {
         if timeRemaining >= 0 {
             progressTimeLine.setProgress(Float(timeRemaining)/Float(totalTime), animated: false)
         } else {
@@ -172,7 +181,7 @@ class ViewController: UIViewController {
         timeRemaining -= 1
     }
     
-    func timeOut() {
+    func timeOut() -> Void {
         timer.invalidate()
         timerIsOn = false
         checkAnswer(nil)
