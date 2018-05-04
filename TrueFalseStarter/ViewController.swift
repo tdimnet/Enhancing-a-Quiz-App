@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Sound
         loadGameStartSound()
-        //playGameStartSound()
+        playGameStartSound()
         // Start game
         gameStart()
     }
