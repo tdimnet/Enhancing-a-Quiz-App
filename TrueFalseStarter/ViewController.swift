@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     // Create a new instance of the quiz game class.
     var quiz = Quiz(
-        questions: [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion],
+        questions: QuestionsData().data,
         questionsPerRound: 4,
         questionsAsked: 0,
         correctQuestions: 0,
@@ -111,7 +111,6 @@ class ViewController: UIViewController {
         normalModeButton.isHidden = true
         lightningModeButton.isHidden = true
         
-        
         // Choose and display question
         quiz.indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
         let questionDictionary = quiz.questions[quiz.indexOfSelectedQuestion]
@@ -122,7 +121,8 @@ class ViewController: UIViewController {
         secondAnswerButton.setTitle(questionDictionary.answers[1].answer, for: .normal)
         thirdAnswerButton.setTitle(questionDictionary.answers[2].answer, for: .normal)
         
-        if isFourthAnswerPresent() < 0.50 && !questionDictionary.answers[3].isCorrect {
+        // Display randomly the fourth answer but it has to be a false answer
+        if isFourthAnswerPresent() < 0.35 && !questionDictionary.answers[3].isCorrect {
             fourthAnswerButton.isHidden = true
         } else {
           fourthAnswerButton.setTitle(questionDictionary.answers[3].answer, for: .normal)
@@ -246,7 +246,8 @@ class ViewController: UIViewController {
         fourthAnswerButton.isHidden = false
         
         // Initiliaze the array of questions and the game mode
-        quiz.questions = [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion, sixthQuestion, seventhQuestion, eighthQuestion, ninthQuestion, tenthQuestion]
+        quiz.questions = QuestionsData().data
+        
         // And the incremental variables
         quiz.questionsAsked = 0
         quiz.correctQuestions = 0
